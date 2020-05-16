@@ -20,6 +20,12 @@ public class DuplicateEmailRemoverTest {
     }
 
     @Test
+    public void sizeShouldBeUpToMaxLimit_IntegrationControl() {
+        EmailDataProvider emailDataProvider = new EmailDataProvider();
+        emailDataProvider.generateTestData(100000001, 100);
+    }
+
+    @Test
     public void sizeShouldBeAtLeastMinLimit() {
         assertThrows(IllegalArgumentException.class, () -> {
             EmailDataProvider emailDataProvider = new EmailDataProvider();
