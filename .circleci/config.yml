@@ -7,11 +7,5 @@ jobs:
       - checkout
       - run: mkdir test-reports
       - run: mvn test
-      - run: mvn verify sonar:sonar
       - store_test_results:
           path: test-output
-workflows:
-  main:
-    jobs:
-      - build:
-          context: SonarCloud
