@@ -2,7 +2,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ahmet-izgi_DuplicateEmailRemove&metric=alert_status)](https://sonarcloud.io/dashboard?id=ahmet-izgi_DuplicateEmailRemove)
 # Duplicate Email Remover
 
-Small java utility that removes all duplicates from an unsorted list of email addresses and returns unique list of emails. Method utilized to handle 1.3M addresses with %50 duplication percentage under 1 second.
+Small java utility that removes all duplicates from an unsorted list of email addresses and returns unique list of emails. Method utilized to handle 1.3M addresses with %50 duplication percentage under 1 second (2 cpu cores, 4 gb RAM).
 
 ## Test Data Generator
 
