@@ -7,13 +7,7 @@ import java.util.Set;
 
 public class DuplicateEmailRemover {
 
-    private List<String> emailAddresses;
-
-    public DuplicateEmailRemover(List<String> emailAddresses) {
-        this.emailAddresses = emailAddresses;
-    }
-
-    public List<String> letsRockWithHashSet() {
+    public static List<String> execute(List<String> emailAddresses) {
         Set<String> set = new HashSet<>();
         List<String> newList = new ArrayList<>();
         for (String emailAddress : emailAddresses) {
@@ -22,9 +16,6 @@ public class DuplicateEmailRemover {
             }
         }
 
-        emailAddresses.clear();
-        emailAddresses.addAll(newList);
-
-        return emailAddresses;
+        return newList;
     }
 }

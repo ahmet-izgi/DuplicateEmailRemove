@@ -36,8 +36,8 @@ public class EmailDataProvider {
 
         List<String> emailAddresses = new ArrayList<>(uniqueEmailAddresses);
 
-        if (uniqueCount < size) {
-            fillArrayWithDuplicates(emailAddresses, uniqueCount);
+        if (uniqueCount < size && uniqueCount != 0) {
+            fillArrayWithDuplicates(emailAddresses, size);
         }
 
         Collections.shuffle(emailAddresses);
@@ -69,19 +69,20 @@ public class EmailDataProvider {
      * @return TRUE if the parameters are valid.
      */
     private boolean isSizeAndPercentageAtRange(int size, int duplicationPercentage) {
-        return ((size <= MAX_EMAIL_LIST_SIZE && size >= 2) && (duplicationPercentage >= 0 && duplicationPercentage <= 100));
+        return ((size <= MAX_EMAIL_LIST_SIZE && size >= 2) && (duplicationPercentage >= 1 && duplicationPercentage <= 100));
     }
 
     /**
      * Duplicates email addresses until the array is full
      *
-     * @param emailAddresses The email address list to be filled with duplicate values.
-     * @param uniqueCount    Unique email address count
+     * @param emailAddresses The unique email address list to be filled with duplicate values.
+     * @param size           Total size of the email addresses
      */
-    private void fillArrayWithDuplicates(List<String> emailAddresses, int uniqueCount) {
-        int duplicateCount = emailAddresses.size() - uniqueCount;
+    private void fillArrayWithDuplicates(List<String> emailAddresses, int size) {
+        int duplicateCount = size - emailAddresses.size();
         for (int i = 0; i < duplicateCount; i++) {
-            emailAddresses.add(emailAddresses.get(i % uniqueCount));
+            int indexOfAddressToBeDuplicate = i < emailAddresses.size() ? i : i % emailAddresses.size();
+            emailAddresses.add(emailAddresses.get(indexOfAddressToBeDuplicate));
         }
     }
 
