@@ -7,5 +7,6 @@ jobs:
       - checkout
       - run: mkdir test-reports
       - run: mvn test
+      - command: mvn verify sonar:sonar
       - store_test_results:
           path: test-output
