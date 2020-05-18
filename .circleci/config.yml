@@ -2,10 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:9.0.4-jdk-browsers
+      - image: 'circleci/openjdk:11-jdk'
     steps:
       - checkout
       - run: mkdir test-reports
       - run: mvn test
+      - run: mvn verify sonar:sonar
       - store_test_results:
           path: test-output
+workflows:
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
